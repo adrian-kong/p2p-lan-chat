@@ -93,12 +93,10 @@ public class Chat {
     }
 
     public void print(String message) throws Exception {
-        DatagramPacket packet = new DatagramPacket(message.getBytes(), message.getBytes().length, inetAddress, user.getPORT());
-        socket.send(packet);
+        socket.send(new DatagramPacket(message.getBytes(), message.getBytes().length, inetAddress, user.getPORT()));
     }
 
     public void sendClientMessage(String message) throws Exception {
-        message = user.getIdentifier() + "~" + message;
-        print(message);
+        print(user.getIdentifier() + "~" + message);
     }
 }
